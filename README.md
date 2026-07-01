@@ -1,4 +1,7 @@
 # NO More PDFs
 ## Instrucciones
 
-1. Aún no hay instrucciones
+Esta aplicación busca ofrecer un conjunto de herramientas para:
+- Modificar el PDF
+- Extraer información
+- Almacenar y trabajar con la misma
