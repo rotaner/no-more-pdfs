@@ -39,7 +39,7 @@ Choose from the following tools (pick a number):
             print("Extracting raw tables...")
             
             path = input("Enter the PDF path: ")
-            # Save the info of the accumulated tables in a variable that can be used outside the local scope of the funcion 2
+            # Save the info of accumulated tables in a variable that can be used outside the local scope of the funcion 2
             raw_tables_data = extract_raw_tables(path)
             print(raw_tables_data)
 
@@ -73,11 +73,23 @@ Choose from the following tools (pick a number):
             wanted_pages = input("Select the pages you would like to extract: ")
 
             # Execute utils function to make the clean list
+            # try:
             selected_pages = string_to_pagelist_convertor(wanted_pages)
-            
+            # except ValueError as error:
+                # print(error)
+                # continue
             # Execute de function 4, spliting the PDF
-            extract_pdf_pages(origin_path, selected_pages, destination_path)
+            pdf_elements = extract_pdf_pages(origin_path, selected_pages, destination_path)
 
+            print(f"\nThe PDF was successfully created\n")
+
+            # Exception
+            # Returns the not foundt pages the user entered
+            if pdf_elements:
+                # Print all the not found pages in a suitable list
+                not_found_pages = ", ".join([str(page) for page in pdf_elements])
+                print(f"The following pages weren't found: {not_found_pages}")
+            
         # 5. Close the program
         elif chosen_tool == "5":
             break
